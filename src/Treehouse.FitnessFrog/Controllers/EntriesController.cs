@@ -20,7 +20,7 @@ namespace Treehouse.FitnessFrog.Controllers
 
         public ActionResult Index()
         {
-            List<Entry> entries = _entriesRepository.GetEntries();
+            List<Entry> entries = _entriesRepository.GetEntries(); //call to get the list of possible repos.
 
             // Calculate the total activity.
             double totalActivity = entries
@@ -39,7 +39,14 @@ namespace Treehouse.FitnessFrog.Controllers
             return View(entries);
         }
 
-        public ActionResult Add()
+        public ActionResult Add() //this method does not handle post requests
+        {
+
+            return View();
+        }
+
+        [ActionName("Add"), HttpPost] //need to add these attribute so that MVC can associate this AddPost to an add Method
+        public ActionResult AddPost() //added another Action called AddPost to handle Post Request.
         {
             return View();
         }
