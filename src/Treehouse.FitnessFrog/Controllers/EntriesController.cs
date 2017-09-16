@@ -41,20 +41,32 @@ namespace Treehouse.FitnessFrog.Controllers
 
         public ActionResult Add() //this method does not handle post requests
         {
+            var entry = new Entry() //instantiate a new Entry on the ViewMethod call
+            {
+                Date = DateTime.Today
+            };
 
-            return View();
+
+            return View(entry);
         }
 
         [HttpPost] //need to add these attribute so that MVC can associate this AddPost to an add Method //actioname attrib was removed because we changed the add method below
-        public ActionResult Add(DateTime? date, int? activityId, double? duration, Entry.IntensityLevel? intensity, bool? exclude, string notes) //added another Action called AddPost to handle Post Request.
+        public ActionResult Add(Entry entry) //added another Action called AddPost to handle Post Request.
         {
             //extract the date of the form field value
             //string date = Request.Form["Date"]; instead of doing it like this you can specify a parameter in the method call. see up inside AddPost()
-            
+
             //updated the parameter values in the method from string to appropriate parameters. IntensityLevel is an enum defined else where.
             //ViewBag.Date = ModelState["Date"].Value.AttemptedValue; //doing this lets us carry the value entered but would also keep what you entered.
 
-            return View();
+            if (ModelState.IsValid)
+            {
+                _entriesRepository.AddEntry(entry);
+
+                //TODO Display the Entries List Page
+            }
+
+            return View(entry);
         }
 
         public ActionResult Edit(int? id)
