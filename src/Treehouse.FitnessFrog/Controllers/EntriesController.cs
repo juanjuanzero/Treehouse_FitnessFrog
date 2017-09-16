@@ -46,10 +46,12 @@ namespace Treehouse.FitnessFrog.Controllers
         }
 
         [HttpPost] //need to add these attribute so that MVC can associate this AddPost to an add Method //actioname attrib was removed because we changed the add method below
-        public ActionResult Add(string date, string activityId, string duration, string intensity, string exclude, string notes) //added another Action called AddPost to handle Post Request.
+        public ActionResult Add(DateTime? date, int? activityId, double? duration, Entry.IntensityLevel? intensity, bool? exclude, string notes) //added another Action called AddPost to handle Post Request.
         {
             //extract the date of the form field value
             //string date = Request.Form["Date"]; instead of doing it like this you can specify a parameter in the method call. see up inside AddPost()
+            
+            //updated the parameter values in the method from string to appropriate parameters. IntensityLevel is an enum defined else where.
             ViewBag.Date = date;
             ViewBag.ActivityID = activityId;
             ViewBag.Duration = duration;
