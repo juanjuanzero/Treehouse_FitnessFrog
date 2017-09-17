@@ -7,6 +7,8 @@
 
 <h2>@ViewBag.Title</h2>
 
+@Html.ValidationSummary("The following errors were found:", new { @class = "alert alert-danger" })
+
 @using (Html.BeginForm())
 {
     <div class="row">
@@ -22,10 +24,11 @@
             <div class="form-group">
                 @Html.LabelFor(m => m.ActivityId, new { @class = "control-label" })
                 @Html.DropDownListFor(m => m.ActivityId, (SelectList)ViewBag.ActivitiesSelectListItems, "", new { @class = "form-control" })
+
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(m => m.Duration, new { @class = "control-label" })
+                @Html.LabelFor(m => m.Intensity, new { @class = "control-label" })
                 <div>
                     <label class="radio-inline">
                         @Html.RadioButtonFor(m => m.Intensity, Entry.IntensityLevel.Low) @Entry.IntensityLevel.Low
@@ -42,8 +45,8 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(m => m.Intensity, new { @class = "control-label" })
-                @Html.TextBoxFor(m => m.Intensity, new { @class = "form-control" })
+                @Html.LabelFor(m => m.Duration, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Duration, new { @class = "form-control" })
             </div>
             @*//the checkbok for method just needs a checkbox there is a hidden field sent if the checkbox is false because normally checkboxes are only sent to the server when checked*@
             <div class="form-group">

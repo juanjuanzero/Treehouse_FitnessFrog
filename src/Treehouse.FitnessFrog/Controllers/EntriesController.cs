@@ -63,6 +63,9 @@ namespace Treehouse.FitnessFrog.Controllers
             //updated the parameter values in the method from string to appropriate parameters. IntensityLevel is an enum defined else where.
             //ViewBag.Date = ModelState["Date"].Value.AttemptedValue; //doing this lets us carry the value entered but would also keep what you entered.
 
+            //ModelState.AddModelError("","This is a global message.");
+
+
             //Inserting the validation rule
 
             //If there arent any duration field validation errors then make sure the duration is greater than 0
