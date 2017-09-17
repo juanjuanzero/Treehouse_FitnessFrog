@@ -45,10 +45,13 @@
                 @Html.LabelFor(m => m.Intensity, new { @class = "control-label" })
                 @Html.TextBoxFor(m => m.Intensity, new { @class = "form-control" })
             </div>
-
+            @*//the checkbok for method just needs a checkbox there is a hidden field sent if the checkbox is false because normally checkboxes are only sent to the server when checked*@
             <div class="form-group">
-                @Html.LabelFor(m => m.Exclude, new { @class = "control-label" })
-                @Html.TextBoxFor(m => m.Exclude, new { @class = "form-control" })
+                <div class="checkbox">
+                    <label>
+                        @Html.CheckBoxFor(m => m.Exclude) @Html.DisplayNameFor(m => m.Exclude)
+                    </label>
+                </div>
             </div>
 
         </div>
