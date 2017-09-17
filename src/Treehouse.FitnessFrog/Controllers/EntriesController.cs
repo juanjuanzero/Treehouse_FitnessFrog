@@ -73,7 +73,8 @@ namespace Treehouse.FitnessFrog.Controllers
             if (ModelState.IsValid)
             {
                 _entriesRepository.AddEntry(entry);
-                //a work around for now
+                //Adding TempData
+                TempData["Message"] = "Your entry was successfully added";
 
                 return RedirectToAction("Index"); //post redirect get pattern... to prevent form duplication
 
@@ -119,6 +120,10 @@ namespace Treehouse.FitnessFrog.Controllers
             if (ModelState.IsValid)
             {
                 _entriesRepository.UpdateEntry(entry);
+
+                //Adding TempData
+                TempData["Message"] = "Your entry was successfully updated";
+
                 return RedirectToAction("Index");
             }
             //TODO Populate the activities select list items ViewBag Property
@@ -151,7 +156,8 @@ namespace Treehouse.FitnessFrog.Controllers
         {
             //TODO Delete the entry
             _entriesRepository.DeleteEntry(id);
-
+            //Adding TempData
+            TempData["Message"] = "Your entry was successfully deleted";
             //TODO Redirect the Entries list page
 
             return RedirectToAction("Index");
